@@ -1,3 +1,5 @@
+
+
 --Revenue Per Products
 
 SELECT
@@ -42,6 +44,58 @@ SELECT
 FROM orders
 GROUP BY customer_id
 ORDER BY total_orders DESC;
+
+
+
+
+USE sales_analysis;
+
+CREATE TABLE customers (
+	customer_id INT PRIMARY KEY,
+    signup_date date
+);
+
+CREATE TABLE products (
+	product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    category VARCHAR(50),
+    price DECIMAL(10,2)
+);
+
+CREATE TABLE orders (
+	order_id INT PRIMARY KEY,
+    customer_id INT,
+    product_id INT,
+    order_date DATE,
+    quantity INT
+);
+
+
+INSERT INTO customers (customer_id, signup_date) VALUES
+(1, '2023-01-10'),
+(2, '2023-02-05'),
+(3, '2023-02-20'),
+(4, '2023-03-15'),
+(5, '2023-04-01');
+
+
+INSERT INTO products (product_id, product_name, category, price) VALUES
+(1, 'Laptop', 'Electronics', 900.00),
+(2, 'Headphones', 'Electronics', 150.00),
+(3, 'Office Chair', 'Furniture', 250.00),
+(4, 'Desk', 'Furniture', 400.00),
+(5, 'Mouse', 'Accessories', 50.00);
+
+INSERT INTO orders (order_id, customer_id, product_id, order_date, quantity) VALUES
+(1, 1, 1, '2023-03-01', 1),
+(2, 1, 2, '2023-03-05', 2),
+(3, 2, 3, '2023-03-10', 1),
+(4, 3, 1, '2023-03-15', 1),
+(5, 3, 5, '2023-03-18', 3),
+(6, 4, 4, '2023-04-01', 1),
+(7, 5, 2, '2023-04-05', 1),
+(8, 5, 5, '2023-04-06', 2);
+
 
 
 
